@@ -64,12 +64,11 @@ model = Sequential([
     Dense(units=10, activation='softmax')
 ])
 model.summary()
-plot_model(model, to_file='keras_cnn_model.png',show_shapes=True, show_layer_names=True)
-print('Model graph saved')
 # Compile the model
 optimizer = SGD(learning_rate=0.01, momentum=0.9, decay=0.0005)
 model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
-model.fit(train_batches, steps_per_epoch=valid_batches.samples // valid_batches.batch_size, epochs=150, verbose=2)
+model.fit(train_batches,  epochs=30, verbose=2)
+model.save('proposedModelNP1.keras')
 
 images_test, labels_test = next(test_batches)
 
